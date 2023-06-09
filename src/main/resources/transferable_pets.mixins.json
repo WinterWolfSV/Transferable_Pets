@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "winterwolfsv.transferable_pets.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": ["PlayerEntityMixin"],
+  "injectors": {
+	"defaultRequire": 1
+  }
+}

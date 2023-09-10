@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "id": "transferable_pets",
-  "version": "${version}",
-  "name": "Transferable Pets",
-  "description": "",
-  "authors": [],
-  "contact": {"repo": "https://github.com/what1/transferable_pets"},
-  "license": "CC-BY-NC-4.0",
-  "icon": "assets/transferable_pets/icon.png",
-  "environment": "server",
+  "name": "${mod_name}",
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "description": "${mod_description}",
+  "authors": ["WinterWolfSV"],
+  "contact": {"repo": "${repository}"},
+  "license": "${license}",
+  "icon": "${mod_icon}",
+  "environment": "${environment}",
   "mixins": [
 	"transferable_pets.mixins.json"
   ],
   "depends": {
-	"fabricloader": ">=${loader_version}",
+	"fabricloader": "*",
 	"fabric": "*",
-	"minecraft": "${minecraft_version}"
+	"minecraft": "${supported_minecraft_versions}"
   }
 }

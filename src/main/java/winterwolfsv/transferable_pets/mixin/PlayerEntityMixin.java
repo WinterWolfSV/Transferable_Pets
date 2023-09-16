@@ -18,13 +18,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
 
-@Mixin(PlayerEntity.class)
+// Priority 999 to load mixin before other mods who have not changed priority. Default priority is 1000, and 1 loads first.
+// Reason for this is to enable compatibility with origin mod.
+@Mixin(value = PlayerEntity.class, priority = 999)
 public class PlayerEntityMixin {
-    @Inject(method = "interact", at = @At("HEAD"), cancellable = true)
+
+    @Inject(method = "interact", at = @At("TAIL"))
     private void interact(Entity entity, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
-
         if (!(entity.isPlayer() && hand.equals(Hand.MAIN_HAND))) return;
-
         PlayerEntity targetPlayer = (PlayerEntity) entity;
         PlayerEntity player = (PlayerEntity) (Object) this;
         if (!(player.isSneaking())) return;
@@ -44,7 +45,6 @@ public class PlayerEntityMixin {
             player.sendMessage(targetPlayer.getDisplayName().copy().append(" is now the owner of ").append(animal.getDisplayName()), true);
             targetPlayer.sendMessage(player.getDisplayName().copy().append(" has transferred ").append(animal.getDisplayName()).append(" to you"), true);
         }
-        cir.setReturnValue(ActionResult.PASS);
     }
 
     private void showHearts(ServerWorld world, Entity entity) {

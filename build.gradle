@@ -58,7 +58,7 @@ java {
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
-    archivesBaseName = project.mod_id + "-[" + project.minecraft_version + "]"
+    archivesBaseName = project.mod_id + project.generated_file_name_addon
     // Uncomment this line to generate a de-obfuscated jar
     // withSourcesJar()
 }

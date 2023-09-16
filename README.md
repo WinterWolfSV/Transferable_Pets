@@ -32,6 +32,6 @@ license in any redistributed versions.
 
 Bug reports can be submitted either through
 the [GitHub Issues](https://github.com/WinterWolfSV/transferable_pets/issues) page of the Transferable Pets mod
-repository or by contacting me personally over Discord (WinterWolfSV#9577). Please provide as much information as
+repository or by contacting me personally over Discord (winterwolfsv). Please provide as much information as
 possible, including steps to reproduce the issue, error messages, and any relevant screenshots or log files. Your
 feedback is greatly appreciated and will help improve the mod for all users.

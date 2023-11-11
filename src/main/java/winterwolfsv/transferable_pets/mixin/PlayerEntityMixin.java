@@ -1,5 +1,6 @@
 package winterwolfsv.transferable_pets.mixin;
 
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.TameableEntity;
@@ -7,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -23,12 +25,13 @@ import java.util.Random;
 @Mixin(value = PlayerEntity.class, priority = 999)
 public class PlayerEntityMixin {
 
+    //    @Environment(net.fabricmc.api.EnvType.SERVER)
     @Inject(method = "interact", at = @At("TAIL"))
     private void interact(Entity entity, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
         if (!(entity.isPlayer() && hand.equals(Hand.MAIN_HAND))) return;
         PlayerEntity targetPlayer = (PlayerEntity) entity;
         PlayerEntity player = (PlayerEntity) (Object) this;
-        if (!(player.isSneaking())) return;
+        if (!(player.isSneaking() && player instanceof ServerPlayerEntity)) return;
         ServerWorld world = (ServerWorld) player.getWorld();
 
         for (Entity localEntities : world.getOtherEntities(player, Box.of(player.getPos(), 12, 12, 12), EntityPredicates.VALID_ENTITY)) {

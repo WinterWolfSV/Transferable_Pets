@@ -40,9 +40,7 @@ processResources {
                 "repository": project.repository,
                 "license": project.license,
                 "mod_icon": project.mod_icon,
-                "environment": project.environment,
-                // Below, add all dependencies that you want to add to your mod's fabric.mod.json
-                "supported_minecraft_versions": project.supported_minecraft_versions
+                "environment": project.environment
     }
 }
 

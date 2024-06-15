@@ -1,6 +1,5 @@
 package winterwolfsv.transferable_pets.mixin;
 
-import net.fabricmc.api.Environment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.TameableEntity;
@@ -36,7 +35,7 @@ public class PlayerEntityMixin {
 
         for (Entity localEntities : world.getOtherEntities(player, Box.of(player.getPos(), 12, 12, 12), EntityPredicates.VALID_ENTITY)) {
             if (!(localEntities instanceof AnimalEntity animal)) continue;
-            if (!(animal.isLeashed() && animal.getHoldingEntity() == player)) continue;
+            if (!(animal.isLeashed() && animal.getLeashHolder() == player)) continue;
             if (!(animal instanceof TameableEntity pet && pet.getOwner() == player)) continue;
 
             ((TameableEntity) animal).setOwner(targetPlayer);
